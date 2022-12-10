@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rCaMAycU3twJ5po69qdTOfz9mhKIS+5lRPSb9kiKnCtiWnLWDgXFXIxQBG5PXLt7c1pjxtGwBRoxDdMgj+LwxQ==",
+  "dgSpecHash": "CAICn1pHobDQqBYN0QxQQgKo57e1mKrqJAAKJNEgLaoB7SG4DnzrAKifM7kJ04R9v+zNm/NH1c5WAJXYG3RT1Q==",
   "success": true,
-  "projectFilePath": "D:\\project\\PIXY\\PIXY\\PIXY.csproj",
+  "projectFilePath": "D:\\project\\PIXY_DEV\\PIXY\\PIXY.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
