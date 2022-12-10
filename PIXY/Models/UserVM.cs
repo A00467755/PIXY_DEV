@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PIXY.Models
 {
-    public class User
+    public class UserVM
     {
         [Required]
         public int ID { get; set; }
@@ -23,9 +23,6 @@ namespace PIXY.Models
         [Required]
         public string Address { get; set; }
 
-        [Required]
-        [Remote("IsAlreadySigned", "Users", HttpMethod = "POST", ErrorMessage = "User Name already exists in database.")]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 5)]
         public string UserName { get; set; }
 
         [Required]

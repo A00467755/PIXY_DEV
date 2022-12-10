@@ -1,14 +1,11 @@
-﻿@model IEnumerable<PIXY.Models.PurchasedItem>
+﻿@model IEnumerable<PIXY.Models.PurchasedItemVM>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Purchased Item";
 }
 
-<h1>Index</h1>
+<h1>Purchased Item</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -24,7 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.NoOfHardcopy)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.FilePath)
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -42,11 +41,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.NoOfHardcopy)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
+             <td>
+                 <img src="@Html.DisplayFor(modelItem => item.FilePath)" width="900" height="600">
+             </td>
         </tr>
 }
     </tbody>

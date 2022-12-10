@@ -25,20 +25,31 @@ namespace PIXY.Controllers
               return View(await _context.Carts.ToListAsync());
         }
 
-
         public async Task<IActionResult> AddToCart(int ImageId)
         {
-            Cart c = new Cart();
-            c.UserId = 1;
-            c.ImageId = ImageId;
-            c.IsHardcopy = false;
-            c.NoOfHardcopy = 0;
+            if (HttpContext.Session.GetInt32("UserID") == null)
+            {
+                // Haven't login
+                return RedirectToAction("Login", "Users");
 
-            _context.Add(c);
-            await _context.SaveChangesAsync();
+            }
+            else {
+                // Haven login
 
-           // TempData["AddedToCart"] = "Images added to cart successfully";
-            return RedirectToAction("Index", "Images");
+                int UserID = (int)HttpContext.Session.GetInt32("UserID");
+
+                Cart c = new Cart();
+                c.UserId = UserID;
+                c.ImageId = ImageId;
+                c.IsHardcopy = false;
+                c.NoOfHardcopy = 0;
+
+                _context.Add(c);
+                await _context.SaveChangesAsync();
+
+               // TempData["AddedToCart"] = "Images added to cart successfully";
+                return RedirectToAction("Index", "Images");
+            }
         }
         public async Task<IActionResult> RemoveFromCart(int id)
         {
@@ -59,42 +70,52 @@ namespace PIXY.Controllers
 
         public async Task<IActionResult> ConfirmPurchase()
         {
-            int UserID = 1; // login user ID to changed
-
-            // Copy Cart content to transaction and purchased items and remove cart item
-            //Cart[] carts = await _context.Carts.Where(m => m.UserId == UserID);
-
-            List<Cart> carts = await _context.Carts.Where(m => m.UserId == UserID).ToListAsync();
-
-            if (carts != null)
+            if (HttpContext.Session.GetInt32("UserID") == null)
             {
-                Transaction Transactions = new Transaction();
-                PurchasedItem PurchasedItems = new PurchasedItem();
-                foreach (var c in carts)
-                {
-                    Transaction t = new Transaction();
-                    PurchasedItem p = new PurchasedItem();
-                    t.UserId = c.UserId;
-                    t.ImageId = c.ImageId;
-                    t.IsHardcopy = c.IsHardcopy;
-                    t.NoOfHardcopy = c.NoOfHardcopy;
-                    t.PurchaseDataTime = DateTime.Now;
+                // Haven't login
+                return RedirectToAction("Login", "Users");
 
-                    p.UserId = c.UserId;
-                    p.ImageId = c.ImageId;
-                    p.IsHardcopy = c.IsHardcopy;
-                    p.NoOfHardcopy = c.NoOfHardcopy;
-
-                    // Add to transaction and purchased items
-                    _context.Add(t);
-                    _context.Add(p);
-
-                    // Clear Shopping Cart
-                    _context.Remove(c);
-                }
-                await _context.SaveChangesAsync();
             }
-            return RedirectToAction("Index", "PurchasedItems");
+            else
+            {
+                // Have login
+
+                //int UserID = 1; // login user ID to changed
+                int UserID = (int)HttpContext.Session.GetInt32("UserID");
+                // Copy Cart content to transaction and purchased items and remove cart item
+
+                List<Cart> carts = await _context.Carts.Where(m => m.UserId == UserID).ToListAsync();
+
+                if (carts != null)
+                {
+                    Transaction Transactions = new Transaction();
+                    PurchasedItem PurchasedItems = new PurchasedItem();
+                    foreach (var c in carts)
+                    {
+                        Transaction t = new Transaction();
+                        PurchasedItem p = new PurchasedItem();
+                        t.UserId = c.UserId;
+                        t.ImageId = c.ImageId;
+                        t.IsHardcopy = c.IsHardcopy;
+                        t.NoOfHardcopy = c.NoOfHardcopy;
+                        t.PurchaseDataTime = DateTime.Now;
+
+                        p.UserId = c.UserId;
+                        p.ImageId = c.ImageId;
+                        p.IsHardcopy = c.IsHardcopy;
+                        p.NoOfHardcopy = c.NoOfHardcopy;
+
+                        // Add to transaction and purchased items
+                        _context.Add(t);
+                        _context.Add(p);
+
+                        // Clear Shopping Cart
+                        _context.Remove(c);
+                    }
+                    await _context.SaveChangesAsync();
+                }
+                return RedirectToAction("Index", "PurchasedItems");
+            }
         }
 
 
