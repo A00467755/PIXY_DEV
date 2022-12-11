@@ -49,6 +49,7 @@ namespace PIXY.Controllers
                     HttpContext.Session.SetInt32("UserID", user.ID);
                     HttpContext.Session.SetString("LastName", user.LastName);
                     HttpContext.Session.SetString("FirstName", user.FirstName);
+                    HttpContext.Session.SetString("Address", user.Address);
                     return RedirectToAction("Index", "Images");
                 }
             } else {
@@ -64,6 +65,7 @@ namespace PIXY.Controllers
             HttpContext.Session.Remove("UserID");
             HttpContext.Session.Remove("LastName");
             HttpContext.Session.Remove("FirstName");
+            HttpContext.Session.Remove("Address");
             return RedirectToAction("Index", "Images");
         }
 
@@ -90,6 +92,7 @@ namespace PIXY.Controllers
                 HttpContext.Session.SetInt32("UserID", user.ID);
                 HttpContext.Session.SetString("LastName", user.LastName);
                 HttpContext.Session.SetString("FirstName", user.FirstName);
+                HttpContext.Session.SetString("Address", user.Address);
             }
             return RedirectToAction("Index", "Images");
         }
@@ -165,6 +168,7 @@ namespace PIXY.Controllers
                     // Refresh Displayed Name
                     HttpContext.Session.SetString("LastName", user.LastName);
                     HttpContext.Session.SetString("FirstName", user.FirstName);
+                    HttpContext.Session.SetString("Address", user.Address);
                 }
                 catch (DbUpdateConcurrencyException)
                 {

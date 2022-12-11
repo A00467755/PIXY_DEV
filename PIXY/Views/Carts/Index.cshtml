@@ -1,101 +1,17 @@
-﻿@model IEnumerable<PIXY.Models.Cart>
-
-@{
-    ViewData["Title"] = "Index";
+﻿@{
+    ViewData["Title"] = "Shopping Cart";
 }
 
-<h1>Index</h1>
+<h1>Shopping Cart</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsHardcopy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NoOfHardcopy)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsHardcopy)
-            </td>
-            <td>
-                <input="text" value="@Html.DisplayFor(modelItem => item.NoOfHardcopy)">
-            </td>
-            <td>
 
-             <a href="/Carts/removefromcart?Id=@Html.DisplayFor(modelItem => item.ID)" type="button">Remove</a>
-                <!--
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                -->
-            </td>
-        </tr>
+
+@await Component.InvokeAsync("RenderCart")
+@await Component.InvokeAsync("RenderPayment")
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
-    </tbody>
-
-
-</table>
-
-
-<form asp-action="checkout">
-    <input type="submit" value="checkout" class="" />
-</form>
-
-After check out ....
-<p></p>
-<h4>Payment Information</h4>
-<table class="table">
-    <tr>
-        <td>Card No.</td>
-        <td><input type="text" name="CardNo" maxlength="16" /></td>
-    </tr>
-    <tr>
-       <td>Name on Card</td>
-       <td><input type="text" name="NameOnCard" /></td>
-    </tr>
-    <tr>
-        <td>Expiry Date</td>
-        <td><input type="text" name="ExpiryDateMonth" maxlength="2" />/<input type="text" name="ExpiryDateYear" maxlength="2" /></td>
-    </tr>
-    <tr>
-        <td>Security Code</td>
-        <td><input type="text" name="SecurityCode" maxlength="3" /></td>
-    </tr>
- </table>
-
-<h4>For Hardcopy</h4>
-<table class="table">
-    <tr>
-        <td>Address</td>
-    </tr>
-    <tr>
-        <td>XXXXXXXXXXXXXX</td>
-    </tr>
-</table>
-
-Input card info and purchase ...
-<form asp-action="confirmpurchase">
-    <input type="submit" value="Confirm" class="" />
-</form>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<PIXY.Models.CartVM>
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<h1>Shopping Cart</h1>
+
+
+<form asp-action="checkout">
+    <input type="submit" value="checkout" class="" />
+</form>
+
+<p></p>
+
+@ViewBag.error
+
+<form method="post" asp-controller="carts" asp-action="payment">
+
+<h1>Payment Information</h1>
+<table class="table">
+    <tr>
+        <td>Card No.</td>
+        <td><input type="text" name="CardNo" maxlength="16" /></td>
+    </tr>
+    <tr>
+       <td>Name on Card</td>
+       <td><input type="text" name="NameOnCard" /></td>
+    </tr>
+    <tr>
+        <td>Expiry Date</td>
+        <td><input type="text" name="ExpiryDateMonth" maxlength="2" />/<input type="text" name="ExpiryDateYear" maxlength="2" /></td>
+    </tr>
+    <tr>
+        <td>Security Code</td>
+        <td><input type="text" name="SecurityCode" maxlength="3" /></td>
+    </tr>
+ </table>
+
+<h4>For Hardcopy</h4>
+<table class="table">
+    <tr>
+        <td>Address</td>
+    </tr>
+    <tr>
+        <td>XXXXXXXXXXXXXX</td>
+    </tr>
+</table>
+</form>
+
+Input card info and purchase ...
+<form asp-action="confirmpurchase">
+    <input type="submit" value="Confirm" class="" />
+</form>

@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\project\PIXY_DEV\PIXY
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/project/PIXY_DEV/PIXY/Views/Carts/Components/RenderCart/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcQ29tcG9uZW50c1xSZW5kZXJDYXJ0XERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/project/PIXY_DEV/PIXY/Views/Carts/Components/RenderPayment/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcQ29tcG9uZW50c1xSZW5kZXJQYXltZW50XERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/project/PIXY_DEV/PIXY/Views/Carts/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -34,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/project/PIXY_DEV/PIXY/Views/Carts/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/project/PIXY_DEV/PIXY/Views/Carts/RenderPaymentInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcUmVuZGVyUGF5bWVudEluZm8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/project/PIXY_DEV/PIXY/Views/Home/Index.cshtml]
