@@ -1,0 +1,1 @@
+"DefaultConnection": "Server=dev.cs.smu.ca;Initial Catalog=k_chan;User ID=k_chan;Password=xxxxxx; TrustServerCertificate=True;MultipleActiveResultSets=true;"
