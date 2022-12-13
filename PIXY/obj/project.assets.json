@@ -10287,19 +10287,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\USER\\.nuget\\packages\\": {}
+    "C:\\Users\\ajay2\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\project\\PIXY_DEV\\PIXY\\PIXY.csproj",
+      "projectUniqueName": "C:\\Users\\ajay2\\OneDrive\\OneDrive - Saint Marys University\\Desktop\\MCDA5510 Software\\PIXY_DEV\\PIXY\\PIXY.csproj",
       "projectName": "PIXY",
-      "projectPath": "D:\\project\\PIXY_DEV\\PIXY\\PIXY.csproj",
-      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "D:\\project\\PIXY_DEV\\PIXY\\obj\\",
+      "projectPath": "C:\\Users\\ajay2\\OneDrive\\OneDrive - Saint Marys University\\Desktop\\MCDA5510 Software\\PIXY_DEV\\PIXY\\PIXY.csproj",
+      "packagesPath": "C:\\Users\\ajay2\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ajay2\\OneDrive\\OneDrive - Saint Marys University\\Desktop\\MCDA5510 Software\\PIXY_DEV\\PIXY\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ajay2\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

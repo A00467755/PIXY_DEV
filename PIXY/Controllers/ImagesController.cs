@@ -40,9 +40,17 @@ namespace PIXY.Controllers
 
 
         // GET: Images
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string SearchString)
         {
-              return View(await _context.Images.ToListAsync());
+            var FilteredImages = from i in _context.Images
+                                 select i;
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                FilteredImages = FilteredImages.Where(s => s.ImageTags!.Contains(SearchString));
+            }
+
+            return View(await FilteredImages.ToListAsync());
         }
 
         // GET: Images/Details/5

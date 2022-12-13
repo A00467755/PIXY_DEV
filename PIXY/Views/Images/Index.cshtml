@@ -4,7 +4,12 @@
     ViewData["Title"] = "Home";
 }
 
-
+<form asp-controller="Images" asp-action="Index" method="get">
+    <p>
+        Tag: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 
 <table class="table">
     <thead>

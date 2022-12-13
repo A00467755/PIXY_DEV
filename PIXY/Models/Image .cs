@@ -9,6 +9,7 @@
         public string CategoryDesc { get; set; }
 
         public string ImageType { get; set; }
+        public string ImageTags { get; set; }
 
         public string FilePathWatermark { get; set; }
         public string FilePath { get; set; }
