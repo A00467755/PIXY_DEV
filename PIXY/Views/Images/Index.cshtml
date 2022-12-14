@@ -11,7 +11,7 @@
             <option value="">All</option>
         </select>
 
-        Tag: <input type="text" name="SearchString" />
+        Tag: <input type="text" name="SearchString" value="@Html.DisplayFor(model => model.SearchTags)" />
         <input type="submit" value="Filter" />
     </p>
 </form>
@@ -20,45 +20,44 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Images![0].UserId)
+                @Html.DisplayNameFor(model => model.ImagesVM![0].CategoryDesc)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Images![0].ImageType)
+                @Html.DisplayNameFor(model => model.ImagesVM![0].AuthorName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Images![0].FilePathWatermark)
-            </th>
-            <!--
-            <th>
-            @Html.DisplayNameFor(model => model.Images![0].FilePath)
-            </th>
-            -->
-            <th>
-                @Html.DisplayNameFor(model => model.Images![0].Price)
+                Image
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Images![0].HaveHardcopy)
+                @Html.DisplayNameFor(model => model.ImagesVM![0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagesVM![0].HaveHardcopy)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Images!) {
+@foreach (var item in Model.ImagesVM!) {
         <tr>
+
             <td>
-                @Html.DisplayFor(modelItem => item.UserId)
+               @Html.DisplayFor(modelItem => item.CategoryDesc)
+            </td>
+
+            <td>
+               @Html.DisplayFor(modelItem => item.AuthorName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImageType)
-            </td>
-            <td>
+             @if (item.IsPurchased == false)
+             {
                 <img src="@Html.DisplayFor(modelItem => item.FilePathWatermark)" width="900" height="600">
+             }
+             else
+            {
+               <img src="@Html.DisplayFor(modelItem => item.FilePath)" width="900" height="600">
+            }
             </td>
-    <!--
-            <td>
-                @Html.DisplayFor(modelItem => item.FilePath)
-            </td>
-                        -->
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
@@ -66,17 +65,23 @@
                 @Html.DisplayFor(modelItem => item.HaveHardcopy)
             </td>
             <td>
+              @if (item.IsPurchased==false)
+                    {
+                        if (item.IsInCart == false) {
+                            <a href="/Carts/addtocart?ImageId=@Html.DisplayFor(modelItem => item.ID)" type="button">Add to cart</a>
+                        }
+                        else
+                        {
+                            <span>Added in Cart</span>
+                            <a href="/Carts/RemoveFromCartByImageId?ImageId=@Html.DisplayFor(modelItem => item.ID)" type="button">Remove</a>
+                        }
+                    }
+                    else
+                    {
+                        <span>Purchased</span>
+                    }
+             </td>
 
-             
-            <a href="/Carts/addtocart?ImageId=@Html.DisplayFor(modelItem => item.ID)" type="button">Add to cart</a>
-               <!--
-                        <a asp-action="Buy" asp-route-id="@item.ID">Add to Cart</a>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-
-               -->
-            </td>
         </tr>
 }
     </tbody>

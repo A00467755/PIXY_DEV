@@ -40,15 +40,15 @@ namespace PIXY.ViewComponents
                 }
                 */
 
-                string tmp = (from u in _context.Users
+                var tmp = (from u in _context.Users
                             where u.ID == UserID
                             select new {
                                 Address = u.Address
-                            }).FirstOrDefault().ToString();
+                            }).FirstOrDefault();
 
                 if (tmp != null)
                 {
-                    result.Address = tmp;
+                    result.Address = tmp.Address;
                 }
 
                 return View(result);
