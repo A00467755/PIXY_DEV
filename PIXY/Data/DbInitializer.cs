@@ -20,8 +20,9 @@ namespace PIXY.Data
 
             var users = new User[]
             {
-            new User{FirstName="Carson",LastName="Alexander",Email="abc@abc.com",PhoneNumber="3232323",Address="adaddsafadfsdf",UserName="AlexC",Password="dfsdfsd"}
-            };
+                 new User{FirstName="Carson",LastName="Alexander",Email="abc@abc.com",PhoneNumber="3232323",Address="adaddsafadfsdf",UserName="AlexC",Password="dfsdfsd"},
+                 new User{FirstName="Tim",LastName="Hortans",Email="ttc@tim.com",PhoneNumber="3299323",Address="100 two two",UserName="tim",Password="dfsdfsd"}
+           };
 
             foreach (User s in users)
             {
