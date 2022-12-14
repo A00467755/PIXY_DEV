@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 html {
-  font-size: 14px;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -14,5 +17,42 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 2rem; 
+}
+
+.navbar-light .navbar-brand {
+    color: #4c00b0;
+}
+
+.navbar-light .navbar-brand:hover {
+    color: black;
+}
+
+.flex-grow-1 {
+    flex-grow: 0 !important;
+}
+
+.navbar-nav {
+    margin: auto; !important;
+    font-weight: bolder;
+}
+
+.navbar-expand-sm .navbar-nav .nav-link {
+    padding-left: 5rem;
+    font-size: 0.9rem;
+    font-weight:800;
+}
+
+.container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
+    margin-left:inherit;
+}
+
+.navbar > .container, .navbar > .container-fluid, .navbar > .container-sm, .navbar > .container-md, .navbar > .container-lg, .navbar > .container-xl, .navbar > .container-xxl {
+    padding-left : 2rem;
 }

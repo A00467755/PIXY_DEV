@@ -21,31 +21,31 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Images" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Images" asp-action="Index">HOME</a>
                         </li>
 
                         @if (Context.Session.GetInt32("UserID") != null)
                         {
                             <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Carts" asp-action="Index">Shopping Cart</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Carts" asp-action="Index">SHOPPING CART</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="PurchasedItems" asp-action="Index">Purcahsed Items</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="PurchasedItems" asp-action="Index">PURCHASED ITEMS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Edit">User Profile</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Edit">USER PROFILE</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Logout">Logout</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Logout">LOGOUT</a>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="SignUp">Sign Up</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="SignUp">SIGN UP</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Login">Login</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Login">LOGIN</a>
                             </li>
                         }
                     </ul>

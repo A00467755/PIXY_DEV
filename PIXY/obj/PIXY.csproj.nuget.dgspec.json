@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\project\\PIXY_DEV\\PIXY\\PIXY.csproj": {}
+    "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\PIXY.csproj": {}
   },
   "projects": {
-    "D:\\project\\PIXY_DEV\\PIXY\\PIXY.csproj": {
+    "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\PIXY.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\project\\PIXY_DEV\\PIXY\\PIXY.csproj",
+        "projectUniqueName": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\PIXY.csproj",
         "projectName": "PIXY",
-        "projectPath": "D:\\project\\PIXY_DEV\\PIXY\\PIXY.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "D:\\project\\PIXY_DEV\\PIXY\\obj\\",
+        "projectPath": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\PIXY.csproj",
+        "packagesPath": "C:\\Users\\Sharl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sharl\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
