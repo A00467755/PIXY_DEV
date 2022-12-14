@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -19,180 +21,97 @@ namespace PIXY.Controllers
             _context = context;
         }
 
-
-        // GET: Images/Buy/5
-        public async Task<IActionResult> Buy(int? id)
-        {
-            if (id == null || _context.Images == null)
-            {
-                return NotFound();
-            }
-
-            var image = await _context.Images
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (image == null)
-            {
-                return NotFound();
-            }
-
-            return View(image);
-        }
-
-
         // GET: Images
         public async Task<IActionResult> Index(string ImageCategory, string SearchString)
         {
+
+            // Get Categories List
             IQueryable<string> CategoryQuery = from m in _context.Images
-                                            orderby m.CategoryDesc
-                                            select m.CategoryDesc;
-            
-            var FilteredImages = from i in _context.Images
-                                 select i;
+                                               orderby m.CategoryDesc
+                                               select m.CategoryDesc;
 
-            if (!string.IsNullOrEmpty(ImageCategory))
+            if (string.IsNullOrEmpty(SearchString))
             {
-                FilteredImages = FilteredImages.Where(s => s.CategoryDesc == ImageCategory);
+                SearchString = "";
             }
 
-            if (!String.IsNullOrEmpty(SearchString))
+            if (HttpContext.Session.GetInt32("UserID") == null)
             {
-                FilteredImages = FilteredImages.Where(s => s.ImageTags!.Contains(SearchString));
-            }
+                // Haven't login
 
-            var imageCategoryVM = new ImagesCategoryView
-            {
-                Categories = new SelectList(await CategoryQuery.Distinct().ToListAsync()),
-                Images = await FilteredImages.ToListAsync()
-            };
-            return View(imageCategoryVM);
-        }
+                var query = from i in _context.Images
+                            where i.ImageTags.Contains(SearchString)
+                            join u in _context.Users on i.UserId equals u.ID
+                            select new ImageVM
+                            {
+                                ID = i.ID,
+                                UserId = i.UserId,
+                                CategoryDesc = i.CategoryDesc,
+                                ImageType = i.ImageType,
+                                FilePathWatermark = i.FilePathWatermark,
+                                FilePath = i.FilePath,
+                                Price = i.Price,
+                                HaveHardcopy = i.HaveHardcopy,
+                                IsPurchased = false,
+                                AuthorName = u.FirstName + " " + u.LastName
+                            };
 
-        // GET: Images/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Images == null)
-            {
-                return NotFound();
-            }
-
-            var image = await _context.Images
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (image == null)
-            {
-                return NotFound();
-            }
-
-            return View(image);
-        }
-
-        // GET: Images/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Images/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,UserId,CategoryDesc,ImageType,FilePathWatermark,FilePath,Price,HaveHardcopy")] Image image)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(image);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(image);
-        }
-
-        // GET: Images/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Images == null)
-            {
-                return NotFound();
-            }
-
-            var image = await _context.Images.FindAsync(id);
-            if (image == null)
-            {
-                return NotFound();
-            }
-            return View(image);
-        }
-
-        // POST: Images/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,UserId,CategoryDesc,ImageType,FilePathWatermark,FilePath,Price,HaveHardcopy")] Image image)
-        {
-            if (id != image.ID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
+                //Apply Filter to Image List
+                if (!string.IsNullOrEmpty(ImageCategory))
                 {
-                    _context.Update(image);
-                    await _context.SaveChangesAsync();
+                    query = query.Where(i => i.CategoryDesc == ImageCategory);
                 }
-                catch (DbUpdateConcurrencyException)
+
+                var imageCategoryVM = new ImagesCategoryView
                 {
-                    if (!ImageExists(image.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    Categories = new SelectList(await CategoryQuery.Distinct().ToListAsync()),  // Execute query for Categories List
+                    ImagesVM = await query.ToListAsync(),                                       // Execute query for Image List
+                    SearchTags = SearchString
+                };
+
+                return View(imageCategoryVM);
+            }
+            else
+            {
+                // Have login
+
+                int UserID = (int)HttpContext.Session.GetInt32("UserID");
+
+                var query = from i in _context.Images
+                            where i.ImageTags.Contains(SearchString)
+                            from u in _context.Users.Where(u => u.ID == i.UserId)
+                            from c in _context.Carts.Where(c => c.ImageId == i.ID).DefaultIfEmpty() //Left Join
+                            from p in _context.PurchasedItems.Where(p=> i.ID==p.ImageId && p.UserId == UserID ).DefaultIfEmpty() //Left Join
+                            select new ImageVM
+                            {
+                                ID = i.ID,
+                                UserId = i.UserId,
+                                CategoryDesc = i.CategoryDesc,
+                                ImageType = i.ImageType,
+                                FilePathWatermark = i.FilePathWatermark,
+                                FilePath = i.FilePath,
+                                Price = i.Price,
+                                HaveHardcopy = i.HaveHardcopy,
+                                IsPurchased = p == null ? false: true,
+                                IsInCart = c == null ? false : true,
+                                AuthorName = u.FirstName + " " + u.LastName
+                            };
+
+                //Apply Filter to Image List
+                if (!string.IsNullOrEmpty(ImageCategory))
+                {
+                    query = query.Where(i => i.CategoryDesc == ImageCategory);
                 }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(image);
-        }
 
-        // GET: Images/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Images == null)
-            {
-                return NotFound();
-            }
+                var imageCategoryVM = new ImagesCategoryView
+                {
+                    Categories = new SelectList(await CategoryQuery.Distinct().ToListAsync()),  // Execute query for Categories List
+                    ImagesVM = await query.ToListAsync(),                                       // Execute query for Image List
+                    SearchTags = SearchString
+                };
 
-            var image = await _context.Images
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (image == null)
-            {
-                return NotFound();
+                return View(imageCategoryVM);
             }
-
-            return View(image);
-        }
-
-        // POST: Images/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Images == null)
-            {
-                return Problem("Entity set 'PIXYContext.Images'  is null.");
-            }
-            var image = await _context.Images.FindAsync(id);
-            if (image != null)
-            {
-                _context.Images.Remove(image);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool ImageExists(int id)

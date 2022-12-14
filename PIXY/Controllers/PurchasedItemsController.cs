@@ -24,8 +24,6 @@ namespace PIXY.Controllers
         public async Task<IActionResult> Index()
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
-            //return View(await _context.PurchasedItems.ToListAsync());
-
             if (HttpContext.Session.GetInt32("UserID") == null)
             {
                 // Haven't login
@@ -40,16 +38,6 @@ namespace PIXY.Controllers
                 int UserID = (int)HttpContext.Session.GetInt32("UserID");
 #pragma warning restore CS8629 // Nullable value type may be null.
 
-                /*
-                var purchasedItem = await _context.PurchasedItems.Where(m => m.UserId == UserID).ToListAsync();
-                
-                if (purchasedItem == null)
-                {
-                    return NotFound();
-                }
-                
-                return View(purchasedItem);
-                */
 
                 var query = from p in _context.PurchasedItems
                             join i in _context.Images on p.ImageId equals i.ID

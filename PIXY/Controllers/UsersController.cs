@@ -18,13 +18,7 @@ namespace PIXY.Controllers
         {
             _context = context;
         }
-        /*
-        // GET: Users
-        public async Task<IActionResult> Index()
-        {
-              return View(await _context.Users.ToListAsync());
-        }
-        */
+
         // GET: Users/Login
         public IActionResult Login()
         {

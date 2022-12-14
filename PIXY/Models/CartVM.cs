@@ -8,5 +8,6 @@
         public Boolean IsHardcopy { get; set; }
         public int NoOfHardcopy { get; set; }
         public string FilePathWatermark { get; set; }
+        public Double Price { get; set; }
     }
 }

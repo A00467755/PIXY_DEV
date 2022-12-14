@@ -69,6 +69,37 @@ namespace PIXY.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> RemoveFromCartByImageId(int ImageId)
+        {
+            if (_context.Carts == null)
+            {
+                return Problem("Entity is null.");
+            }
+
+            if (HttpContext.Session.GetInt32("UserID") == null)
+            {
+                // Haven't login
+                return RedirectToAction("Login", "Users");
+
+            }
+            else
+            {
+                // Haven login
+
+                int UserID = (int)HttpContext.Session.GetInt32("UserID");
+
+                var x = (from c in _context.Carts
+                         where c.UserId == UserID && c.ImageId == ImageId
+                         orderby c.ID descending
+                         select c).FirstOrDefault();
+
+                if (x != null) { 
+                    _context.Carts.Remove(x);
+                    _context.SaveChanges();
+                }
+            }
+            return RedirectToAction("Index", "Images");
+        }
 
         public async Task<IActionResult> ConfirmPurchase()
         {
@@ -118,31 +149,11 @@ namespace PIXY.Controllers
                     }
                     await _context.SaveChangesAsync();
                 }
-                return RedirectToAction("Index", "PurchasedItems");
+                return RedirectToAction("PurchaseSuccess", "Carts");
             }
         }
 
-
-        // GET: Carts/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Carts == null)
-            {
-                return NotFound();
-            }
-
-            var cart = await _context.Carts
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (cart == null)
-            {
-                return NotFound();
-            }
-
-            return View(cart);
-        }
-
-        // GET: Carts/Create
-        public IActionResult Create()
+        public IActionResult PurchaseSuccess()
         {
             return View();
         }
