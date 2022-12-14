@@ -28,7 +28,9 @@ namespace PIXY.ViewComponents
             else
             {
                 // Have login
+#pragma warning disable CS8629 // Nullable value type may be null.
                 int UserID = (int)HttpContext.Session.GetInt32("UserID");
+#pragma warning restore CS8629 // Nullable value type may be null.
                 /*
                 var user =  _context.Users.FirstOrDefaultAsync(e => e.ID == UserID);
 

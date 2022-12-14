@@ -1,11 +1,16 @@
-﻿@model IEnumerable<PIXY.Models.Image>
+﻿@model PIXY.Models.ImagesCategoryView
 
 @{
     ViewData["Title"] = "Home";
 }
 
 <form asp-controller="Images" asp-action="Index" method="get">
+ 
     <p>
+        <select asp-for="ImageCategory" asp-items="Model.Categories">
+            <option value="">All</option>
+        </select>
+
         Tag: <input type="text" name="SearchString" />
         <input type="submit" value="Filter" />
     </p>
@@ -15,39 +20,33 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.UserId)
+                @Html.DisplayNameFor(model => model.Images![0].UserId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CategoryDesc)
+                @Html.DisplayNameFor(model => model.Images![0].ImageType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImageType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FilePathWatermark)
+                @Html.DisplayNameFor(model => model.Images![0].FilePathWatermark)
             </th>
             <!--
             <th>
-                @Html.DisplayNameFor(model => model.FilePath)
+            @Html.DisplayNameFor(model => model.Images![0].FilePath)
             </th>
             -->
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Images![0].Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HaveHardcopy)
+                @Html.DisplayNameFor(model => model.Images![0].HaveHardcopy)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Images!) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryDesc)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ImageType)

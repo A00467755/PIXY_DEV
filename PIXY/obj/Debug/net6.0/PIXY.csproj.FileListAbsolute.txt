@@ -281,6 +281,14 @@ D:\project\PIXY\PIXY\obj\Debug\net6.0\refint\PIXY.dll
 D:\project\PIXY\PIXY\obj\Debug\net6.0\PIXY.pdb
 D:\project\PIXY\PIXY\obj\Debug\net6.0\PIXY.genruntimeconfig.cache
 D:\project\PIXY\PIXY\obj\Debug\net6.0\ref\PIXY.dll
+C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.csproj.AssemblyReference.cache
+C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.AssemblyInfoInputs.cache
+C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.AssemblyInfo.cs
+C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.csproj.CoreCompileInputs.cache
+C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.RazorAssemblyInfo.cache
+C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.RazorAssemblyInfo.cs
 C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\bin\Debug\net6.0\appsettings.json
 C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\bin\Debug\net6.0\PIXY.staticwebassets.runtime.json
@@ -540,14 +548,6 @@ C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Softw
 C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.csproj.AssemblyReference.cache
-C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.AssemblyInfoInputs.cache
-C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.AssemblyInfo.cs
-C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.csproj.CoreCompileInputs.cache
-C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.RazorAssemblyInfo.cache
-C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\PIXY.RazorAssemblyInfo.cs
 C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\staticwebassets\msbuild.PIXY.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\staticwebassets\msbuild.build.PIXY.props
 C:\Users\ajay2\OneDrive\OneDrive - Saint Marys University\Desktop\MCDA5510 Software\PIXY_DEV\PIXY\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.PIXY.props

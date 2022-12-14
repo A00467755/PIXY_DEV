@@ -36,7 +36,9 @@ namespace PIXY.Controllers
             else {
                 // Haven login
 
+#pragma warning disable CS8629 // Nullable value type may be null.
                 int UserID = (int)HttpContext.Session.GetInt32("UserID");
+#pragma warning restore CS8629 // Nullable value type may be null.
 
                 Cart c = new Cart();
                 c.UserId = UserID;
@@ -81,7 +83,9 @@ namespace PIXY.Controllers
                 // Have login
 
                 //int UserID = 1; // login user ID to changed
+#pragma warning disable CS8629 // Nullable value type may be null.
                 int UserID = (int)HttpContext.Session.GetInt32("UserID");
+#pragma warning restore CS8629 // Nullable value type may be null.
                 // Copy Cart content to transaction and purchased items and remove cart item
 
                 List<Cart> carts = await _context.Carts.Where(m => m.UserId == UserID).ToListAsync();

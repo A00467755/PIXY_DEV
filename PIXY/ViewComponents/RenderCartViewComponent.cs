@@ -27,7 +27,9 @@ namespace PIXY.ViewComponents
             else
             {
                 // Have login
+#pragma warning disable CS8629 // Nullable value type may be null.
                 int UserID = (int)HttpContext.Session.GetInt32("UserID");
+#pragma warning restore CS8629 // Nullable value type may be null.
 
                 var query = from c in _context.Carts
                             join i in _context.Images on c.ImageId equals i.ID
