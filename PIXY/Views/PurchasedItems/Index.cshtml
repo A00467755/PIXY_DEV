@@ -6,9 +6,14 @@
 
 <h1>Purchased Item</h1>
 
+
+<form asp-action="DownloadZip">
+<input id="DownloadBtn" type="submit" value="Download" class="btn btn-primary" disabled="disabled"/>
 <table class="table">
     <thead>
         <tr>
+            <th>
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsHardcopy)
             </th>
@@ -16,13 +21,15 @@
                 @Html.DisplayNameFor(model => model.NoOfHardcopy)
             </th>
             <th>
-                
             </th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                <input id=@item.ImageId type="checkbox" name="SelectedImage" value=@item.ImageId class="w3-check" />
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsHardcopy)
             </td>
@@ -36,3 +43,19 @@
 }
     </tbody>
 </table>
+</form>
+
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input[type="checkbox"]').change(function () {
+                if ($('input[type="checkbox"]:checked').length > 0) {
+                    $('#DownloadBtn').prop('disabled', false);
+                } else {
+                    $('#DownloadBtn').prop('disabled', true);
+                }
+            });
+        });
+    </script>
+}

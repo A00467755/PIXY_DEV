@@ -9,5 +9,7 @@
         public int NoOfHardcopy { get; set; }
 
         public string FilePath { get; set; }
+
+        public List<int> SelectedImage { get; set; }
     }
 }

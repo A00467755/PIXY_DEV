@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -56,6 +57,60 @@ namespace PIXY.Controllers
 
                 return View(results);
             }
+        }
+
+        public FileResult DownLoadZip([Bind("SelectedImage")] PurchasedItemVM purchasedItemVM)
+        {
+            var webRoot = Directory.GetCurrentDirectory();
+            var fileName = "PIXY_Images.zip";
+            var tempOutput = webRoot + "/Download/" + fileName;
+
+            using (ZipOutputStream IzipOutputStream = new ZipOutputStream(System.IO.File.Create(tempOutput)))
+            {
+                IzipOutputStream.SetLevel(9);
+                byte[] buffer = new byte[4096];
+                var imageList = new List<string>();
+
+                for (int i = 0; i < purchasedItemVM.SelectedImage.Count; i++)
+                { 
+                    imageList.Add(Path.Combine(Directory.GetCurrentDirectory(),
+                        "images_p", purchasedItemVM.SelectedImage[i].ToString().PadLeft(3,'0') + ".jpg"));
+                }
+
+                for (int i = 0; i < imageList.Count; i++)
+                {
+                    ZipEntry entry = new ZipEntry(Path.GetFileName(imageList[i]));
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    IzipOutputStream.PutNextEntry(entry);
+
+                    using (FileStream oFileStream = System.IO.File.OpenRead(imageList[i]))
+                    {
+                        int sourceBytes;
+                        do
+                        {
+                            sourceBytes = oFileStream.Read(buffer, 0, buffer.Length);
+                            IzipOutputStream.Write(buffer, 0, sourceBytes);
+                        } while (sourceBytes > 0);
+                    }
+                }
+                IzipOutputStream.Finish();
+                IzipOutputStream.Flush();
+                IzipOutputStream.Close();
+            }
+
+            byte[] finalResult = System.IO.File.ReadAllBytes(tempOutput);
+            if (System.IO.File.Exists(tempOutput))
+            {
+                System.IO.File.Delete(tempOutput);
+            }
+            if (finalResult == null || !finalResult.Any())
+            {
+                throw new Exception(String.Format("Nothing found"));
+
+            }
+
+            return File(finalResult, "application/zip", fileName);
         }
 
         private bool PurchasedItemExists(int id)

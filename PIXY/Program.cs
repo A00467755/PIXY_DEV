@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using Microsoft.Extensions.FileProviders;
 
 namespace PIXY
 {
@@ -40,6 +40,13 @@ namespace PIXY
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+            Path.Combine(builder.Environment.ContentRootPath, "images_p")),
+                RequestPath = "/images"
+            });
 
             app.UseSession();
 

@@ -37,10 +37,10 @@ namespace PIXY.Data
             
             var images = new Image[]
             {
-            new Image{ UserId =1,CategoryDesc="Natural",ImageType="jpg",ImageTags="green",FilePathWatermark="\\images\\photo\\001_w.jpg",FilePath="\\images\\photo\\001.jpg",Price=10.1,HaveHardcopy=true},
-            new Image{ UserId =1,CategoryDesc="Landscape",ImageType="jpg",ImageTags="nature,red",FilePathWatermark="\\images\\photo\\002_w.jpg",FilePath="\\images\\photo\\002.jpg",Price=10.1,HaveHardcopy=true},
-            new Image{ UserId =2,CategoryDesc="Food",ImageType="jpg",ImageTags="red",FilePathWatermark="\\images\\photo\\003_w.jpg",FilePath="\\images\\photo\\003.jpg",Price=10.1,HaveHardcopy=true},
-            new Image{ UserId =2,CategoryDesc="Landscape",ImageType="jpg",ImageTags="yello",FilePathWatermark="\\images\\photo\\004_w.jpg",FilePath="\\images\\photo\\004.jpg",Price=10.1,HaveHardcopy=true}
+            new Image{ UserId =1,CategoryDesc="Natural",ImageType="jpg",ImageTags="green",FilePathWatermark="\\images_w\\photo\\001_w.jpg",FilePath="\\images\\photo\\001.jpg",Price=10.1,HaveHardcopy=true},
+            new Image{ UserId =1,CategoryDesc="Landscape",ImageType="jpg",ImageTags="nature,red",FilePathWatermark="\\images_w\\photo\\002_w.jpg",FilePath="\\images\\photo\\002.jpg",Price=10.1,HaveHardcopy=true},
+            new Image{ UserId =2,CategoryDesc="Food",ImageType="jpg",ImageTags="red",FilePathWatermark="\\images_w\\photo\\003_w.jpg",FilePath="\\images\\photo\\003.jpg",Price=10.1,HaveHardcopy=true},
+            new Image{ UserId =2,CategoryDesc="Landscape",ImageType="jpg",ImageTags="yello",FilePathWatermark="\\images_w\\photo\\004_w.jpg",FilePath="\\images\\photo\\004.jpg",Price=10.1,HaveHardcopy=true}
             };
 
             foreach (Image s in images)

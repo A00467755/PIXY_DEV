@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\project\\PIXY_MAIN\\PIXY_DEV\\PIXY\\PIXY.csproj": {}
+    "D:\\project\\PIXY_DEV\\PIXY\\PIXY.csproj": {}
   },
   "projects": {
-    "D:\\project\\PIXY_MAIN\\PIXY_DEV\\PIXY\\PIXY.csproj": {
+    "D:\\project\\PIXY_DEV\\PIXY\\PIXY.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\project\\PIXY_MAIN\\PIXY_DEV\\PIXY\\PIXY.csproj",
+        "projectUniqueName": "D:\\project\\PIXY_DEV\\PIXY\\PIXY.csproj",
         "projectName": "PIXY",
-        "projectPath": "D:\\project\\PIXY_MAIN\\PIXY_DEV\\PIXY\\PIXY.csproj",
+        "projectPath": "D:\\project\\PIXY_DEV\\PIXY\\PIXY.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "D:\\project\\PIXY_MAIN\\PIXY_DEV\\PIXY\\obj\\",
+        "outputPath": "D:\\project\\PIXY_DEV\\PIXY\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -61,6 +61,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.10, )"
+            },
+            "SharpZipLib.NETStandard": {
+              "target": "Package",
+              "version": "[1.0.7, )"
             }
           },
           "imports": [
