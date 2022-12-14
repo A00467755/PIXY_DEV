@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600&display=swap');
 
 html {
     font-size: 14px;
@@ -45,14 +45,30 @@ body {
 
 .navbar-expand-sm .navbar-nav .nav-link {
     padding-left: 5rem;
-    font-size: 0.9rem;
-    font-weight:800;
+    font-size: 1rem;
 }
 
+
 .container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
-    margin-left:inherit;
+    margin-left: 2rem;
 }
 
 .navbar > .container, .navbar > .container-fluid, .navbar > .container-sm, .navbar > .container-md, .navbar > .container-lg, .navbar > .container-xl, .navbar > .container-xxl {
     padding-left : 2rem;
+}
+
+.product{
+    width: 800px;
+    height: 500px;
+    border-style: solid;
+    border-width:medium;
+}
+
+.table{
+    margin: auto;
+    font-weight: bold;
+}
+
+.table > :not(caption) > * > *{
+    padding-left:1rem;
 }

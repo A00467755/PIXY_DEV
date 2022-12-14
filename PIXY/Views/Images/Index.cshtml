@@ -8,7 +8,7 @@
 
 <table class="table">
     <thead>
-        <tr>
+        <tr class="Names">
             <th>
                 @Html.DisplayNameFor(model => model.UserId)
             </th>
@@ -48,7 +48,7 @@
                 @Html.DisplayFor(modelItem => item.ImageType)
             </td>
             <td>
-                <img src="@Html.DisplayFor(modelItem => item.FilePathWatermark)" width="900" height="600">
+                    <img src="@Html.DisplayFor(modelItem => item.FilePathWatermark)" class="product">
             </td>
     <!--
             <td>
