@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form method="post" asp-controller="Carts" asp-action="ConfirmPurchase">
+        <form id="form1" name ="form1" method="post" asp-controller="Carts" asp-action="ConfirmPurchase">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ID" />
             <div class="form-group">
@@ -32,19 +32,20 @@
                 <span asp-validation-for="SecurityCode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Proceed with Purchase" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
-
-<h4>For Hardcopy</h4>
-<table class="table">
-    <tr>
-        <td>Address</td>
-    </tr>
-    <tr>
-        <td>@Html.DisplayFor(model => model.Address)</td>
-    </tr>
-</table>
+<div>
+    <h4>For Hardcopy</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+    </dl>
+</div>

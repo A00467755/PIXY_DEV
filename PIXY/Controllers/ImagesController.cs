@@ -19,158 +19,62 @@ namespace PIXY.Controllers
             _context = context;
         }
 
-
-        // GET: Images/Buy/5
-        public async Task<IActionResult> Buy(int? id)
-        {
-            if (id == null || _context.Images == null)
-            {
-                return NotFound();
-            }
-
-            var image = await _context.Images
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (image == null)
-            {
-                return NotFound();
-            }
-
-            return View(image);
-        }
-
-
         // GET: Images
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Images.ToListAsync());
-        }
-
-        // GET: Images/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Images == null)
+            if (HttpContext.Session.GetInt32("UserID") == null)
             {
-                return NotFound();
-            }
+                // Haven't login
 
-            var image = await _context.Images
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (image == null)
+                var query = from i in _context.Images
+                            join u in _context.Users on i.UserId equals u.ID
+                            select new ImageVM
+                            {
+                                ID = i.ID,
+                                UserId = i.UserId,
+                                CategoryDesc = i.CategoryDesc,
+                                ImageType = i.ImageType,
+                                FilePathWatermark = i.FilePathWatermark,
+                                FilePath = i.FilePath,
+                                Price = i.Price,
+                                HaveHardcopy = i.HaveHardcopy,
+                                IsPurchased = false,
+                                AuthorName = u.FirstName + " " + u.LastName
+                            };
+
+                ImageVM[] results = query.ToArray();
+
+                return View(results);
+            }
+            else
             {
-                return NotFound();
+                // Have login
+
+                int UserID = (int)HttpContext.Session.GetInt32("UserID");
+
+                var query = from i in _context.Images
+                            from u in _context.Users.Where(u => u.ID == i.UserId)
+                            from c in _context.Carts.Where(c => c.ImageId == i.ID).DefaultIfEmpty() //Left Join
+                            from p in _context.PurchasedItems.Where(p=> i.ID==p.ImageId && p.UserId == UserID ).DefaultIfEmpty() //Left Join
+                            select new ImageVM
+                            {
+                                ID = i.ID,
+                                UserId = i.UserId,
+                                CategoryDesc = i.CategoryDesc,
+                                ImageType = i.ImageType,
+                                FilePathWatermark = i.FilePathWatermark,
+                                FilePath = i.FilePath,
+                                Price = i.Price,
+                                HaveHardcopy = i.HaveHardcopy,
+                                IsPurchased = p == null ? false: true,
+                                IsInCart = c == null ? false : true,
+                                AuthorName = u.FirstName + " " + u.LastName
+                            };
+
+                ImageVM[] results = query.ToArray();
+
+                return View(results);
             }
-
-            return View(image);
-        }
-
-        // GET: Images/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Images/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,UserId,CategoryDesc,ImageType,FilePathWatermark,FilePath,Price,HaveHardcopy")] Image image)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(image);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(image);
-        }
-
-        // GET: Images/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Images == null)
-            {
-                return NotFound();
-            }
-
-            var image = await _context.Images.FindAsync(id);
-            if (image == null)
-            {
-                return NotFound();
-            }
-            return View(image);
-        }
-
-        // POST: Images/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,UserId,CategoryDesc,ImageType,FilePathWatermark,FilePath,Price,HaveHardcopy")] Image image)
-        {
-            if (id != image.ID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(image);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ImageExists(image.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(image);
-        }
-
-        // GET: Images/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Images == null)
-            {
-                return NotFound();
-            }
-
-            var image = await _context.Images
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (image == null)
-            {
-                return NotFound();
-            }
-
-            return View(image);
-        }
-
-        // POST: Images/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Images == null)
-            {
-                return Problem("Entity set 'PIXYContext.Images'  is null.");
-            }
-            var image = await _context.Images.FindAsync(id);
-            if (image != null)
-            {
-                _context.Images.Remove(image);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool ImageExists(int id)

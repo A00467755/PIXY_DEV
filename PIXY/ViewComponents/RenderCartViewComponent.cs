@@ -39,8 +39,8 @@ namespace PIXY.ViewComponents
                                 ImageId = c.ImageId,
                                 IsHardcopy = c.IsHardcopy,
                                 NoOfHardcopy = c.NoOfHardcopy,
-                                FilePathWatermark = i.FilePathWatermark
-                            };
+                                FilePathWatermark = i.FilePathWatermark,
+                                Price = i.Price                            };
 
                 CartVM[] results = query.ToArray();
 

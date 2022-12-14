@@ -1,31 +1,22 @@
-﻿@model IEnumerable<PIXY.Models.Image>
+﻿@model IEnumerable<PIXY.Models.ImageVM>
 
 @{
     ViewData["Title"] = "Home";
 }
 
 
-
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.CategoryDesc)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImageType)
+                @Html.DisplayNameFor(model => model.AuthorName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FilePathWatermark)
+                Image
             </th>
-            <!--
-            <th>
-                @Html.DisplayNameFor(model => model.FilePath)
-            </th>
-            -->
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
@@ -39,22 +30,21 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.CategoryDesc)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImageType)
+                 @Html.DisplayFor(modelItem => item.AuthorName)
             </td>
             <td>
-                <img src="@Html.DisplayFor(modelItem => item.FilePathWatermark)" width="900" height="600">
-            </td>
-    <!--
-            <td>
-                @Html.DisplayFor(modelItem => item.FilePath)
-            </td>
-                        -->
+                    @if (item.IsPurchased == false)
+                    {
+                        <img src="@Html.DisplayFor(modelItem => item.FilePathWatermark)" width="900" height="600">
+                    }
+                    else
+                    {
+                        <img src="@Html.DisplayFor(modelItem => item.FilePath)" width="900" height="600">
+                    }
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
@@ -62,17 +52,22 @@
                 @Html.DisplayFor(modelItem => item.HaveHardcopy)
             </td>
             <td>
-
-             
-            <a href="/Carts/addtocart?ImageId=@Html.DisplayFor(modelItem => item.ID)" type="button">Add to cart</a>
-               <!--
-                        <a asp-action="Buy" asp-route-id="@item.ID">Add to Cart</a>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-
-               -->
-            </td>
+                    @if (item.IsPurchased==false)
+                    {
+                        if (item.IsInCart == false) {
+                            <a href="/Carts/addtocart?ImageId=@Html.DisplayFor(modelItem => item.ID)" type="button">Add to cart</a>
+                        }
+                        else
+                        {
+                            <span>Added in Cart</span>
+                            <a href="/Carts/RemoveFromCartByImageId?ImageId=@Html.DisplayFor(modelItem => item.ID)" type="button">Remove</a>
+                        }
+                    }
+                    else
+                    {
+                        <span>Purchased</span>
+                    }
+             </td>
         </tr>
 }
     </tbody>
