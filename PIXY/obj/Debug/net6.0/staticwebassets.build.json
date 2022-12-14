@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EI2sI65HfnaPt7d/rRLHY357KvaVCKVwmHcquTCktOw=",
+  "Hash": "q/DY8UIx/BhSYEJwCb8hBHezn2TYn2C+8SRkMG7U+5s=",
   "Source": "PIXY",
   "BasePath": "_content/PIXY",
   "Mode": "Default",
@@ -459,6 +459,23 @@
       "OriginalItemSpec": "wwwroot\\images\\photo\\008_w.jpg"
     },
     {
+      "Identity": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\images\\photo\\009_w.jpg",
+      "SourceId": "PIXY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\",
+      "BasePath": "_content/PIXY",
+      "RelativePath": "images/photo/009_w.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\photo\\009_w.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\images\\photo\\10272634_10203115542504800_2134926088671763486_o.jpg",
       "SourceId": "PIXY",
       "SourceType": "Discovered",
@@ -525,6 +542,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\photo\\31747974_10215208864230285_727093918323179520_n.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\images\\photo\\bailey-zindel-NRQV-hBF10M-unsplash.jpg",
+      "SourceId": "PIXY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\",
+      "BasePath": "_content/PIXY",
+      "RelativePath": "images/photo/bailey-zindel-NRQV-hBF10M-unsplash.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\photo\\bailey-zindel-NRQV-hBF10M-unsplash.jpg"
     },
     {
       "Identity": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\images\\photo\\DSC_0371.JPG",
@@ -695,6 +729,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\photo\\IMG_2163.JPG"
+    },
+    {
+      "Identity": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\images\\photo\\jimmy-dean-Yn0l7uwBrpw-unsplash.jpg",
+      "SourceId": "PIXY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\",
+      "BasePath": "_content/PIXY",
+      "RelativePath": "images/photo/jimmy-dean-Yn0l7uwBrpw-unsplash.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\photo\\jimmy-dean-Yn0l7uwBrpw-unsplash.jpg"
     },
     {
       "Identity": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\images\\photo\\SDQ_0036.jpg",
