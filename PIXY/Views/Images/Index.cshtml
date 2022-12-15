@@ -23,6 +23,9 @@
                 @Html.DisplayNameFor(model => model.ImagesVM![0].CategoryDesc)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.ImagesVM![0].ImageTags)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.ImagesVM![0].AuthorName)
             </th>
             <th>
@@ -44,7 +47,9 @@
             <td>
                @Html.DisplayFor(modelItem => item.CategoryDesc)
             </td>
-
+            <td>
+               @Html.DisplayFor(modelItem => item.ImageTags)
+             </td>
             <td>
                @Html.DisplayFor(modelItem => item.AuthorName)
             </td>
@@ -79,6 +84,7 @@
                     else
                     {
                         <span>Purchased</span>
+                        <a href="/Images/DownLoadZip?ImageId=@Html.DisplayFor(modelItem => item.ID)" type="button">Download</a>
                     }
              </td>
 
