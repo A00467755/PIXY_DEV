@@ -22,8 +22,12 @@ namespace PIXY.Models
         public string Email { get; set; }
 
         [Required]
+        [RegularExpression("^\\(?([0-9]{3})\\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Please input a valid 10 digit number")]
         public string PhoneNumber { get; set; }
+
         [Required]
+        [Remote("CheckAddress", "Users", HttpMethod = "POST", ErrorMessage = "Please enter a valid address.")]
+        [StringLength(100, ErrorMessage = "We only deliver within Canada and to the United States!")]
         public string Address { get; set; }
 
         [Required]
