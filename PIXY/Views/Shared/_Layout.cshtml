@@ -11,9 +11,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Images" asp-action="Index">PIXY</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PIXY</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,23 +21,26 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-0">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Images" asp-action="Index">HOME</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Images" asp-action="Index">MARKETPLACE</a>
                         </li>
 
                         @if (Context.Session.GetInt32("UserID") != null)
                         {
-                            <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Carts" asp-action="Index">SHOPPING CART</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="PurchasedItems" asp-action="Index">PURCHASED ITEMS</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Edit">USER PROFILE</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Logout">LOGOUT</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Carts" asp-action="Index">SHOPPING CART</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="PurchasedItems" asp-action="Index">PURCHASED ITEMS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Edit">USER PROFILE</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Logout">LOGOUT</a>
+                                </li>
                         }
                         else
                         {
@@ -49,14 +52,14 @@
                             </li>
                         }
                     </ul>
-                </div>
-
-                @if (Context.Session.GetInt32("UserID") != null)
-                {
-                    <div>Welcome @Context.Session.GetString("FirstName") @Context.Session.GetString("LastName")</div>
-                }         
+                </div>     
             </div>
         </nav>
+
+        @if (Context.Session.GetInt32("UserID") != null)
+                {
+                    <div class="Session">WELCOME @Context.Session.GetString("FirstName").ToUpper() @Context.Session.GetString("LastName").ToUpper()</div>
+                }    
         
     </header>
     <div class="container">

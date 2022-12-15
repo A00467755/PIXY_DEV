@@ -32,12 +32,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.HaveHardcopy)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        <tr class="Names-1">
             <td>
                 @Html.DisplayFor(modelItem => item.UserId)
             </td>

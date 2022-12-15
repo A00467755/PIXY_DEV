@@ -21,16 +21,20 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+.navbar {
+    background: #ead9f3;
+}
+
 .navbar-brand {
     font-weight: 800;
     font-size: 2rem; 
 }
 
-.navbar-light .navbar-brand {
-    color: #4c00b0;
+.navbar-brand {
+    color: #28104e;
 }
 
-.navbar-light .navbar-brand:hover {
+.navbar-brand:hover {
     color: black;
 }
 
@@ -48,13 +52,9 @@ body {
     font-size: 1rem;
 }
 
-
-.container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
-    margin-left: 2rem;
-}
-
-.navbar > .container, .navbar > .container-fluid, .navbar > .container-sm, .navbar > .container-md, .navbar > .container-lg, .navbar > .container-xl, .navbar > .container-xxl {
-    padding-left : 2rem;
+.navbar-expand-sm .navbar-nav .nav-link {
+    padding-left: 5rem;
+    font-size: 1rem;
 }
 
 .product{
@@ -71,4 +71,32 @@ body {
 
 .table > :not(caption) > * > *{
     padding-left:1rem;
+}
+
+.navbar-nav {
+    display: -webkit-inline-box;
+}
+
+/*
+
+    .thread{
+    border-width: 2rem;
+}
+
+
+*/
+
+.Names th {
+    background: pink;
+}
+
+.Names-1 tr {
+    border-style: solid;
+}
+
+.Session {
+    padding: 1rem;
+    padding-left: 7rem;
+    font-size: 1.5rem;
+    font-weight: 600; 
 }
