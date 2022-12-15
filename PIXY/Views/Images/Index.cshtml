@@ -18,7 +18,7 @@
 
 <table class="table">
     <thead>
-        <tr>
+        <tr class="Names">
             <th>
                 @Html.DisplayNameFor(model => model.ImagesVM![0].CategoryDesc)
             </th>
@@ -42,7 +42,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model.ImagesVM!) {
-        <tr>
+        <tr class="Names-1">
 
             <td>
                @Html.DisplayFor(modelItem => item.CategoryDesc)

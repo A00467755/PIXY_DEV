@@ -1,4 +1,6 @@
-﻿namespace PIXY.Models
+﻿using System.ComponentModel;
+
+namespace PIXY.Models
 {
     public class Image
     {
@@ -6,12 +8,15 @@
         public int ID { get; set; }
 
         public int UserId { get; set; }
+
         public string CategoryDesc { get; set; }
 
         public string ImageType { get; set; }
+        
         public string ImageTags { get; set; }
 
         public string FilePathWatermark { get; set; }
+        
         public string FilePath { get; set; }
 
         public Double Price { get; set; }

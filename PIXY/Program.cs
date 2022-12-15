@@ -45,7 +45,7 @@ namespace PIXY
 
             app.MapControllerRoute(
              name: "default",
-             pattern: "{controller=Images}/{action=Index}/{id?}");
+             pattern: "{controller=Home}/{action=Index}/{id?}");
 
 
             CreateDbIfNotExists(app);
