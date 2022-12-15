@@ -15,12 +15,9 @@
             <th>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsHardcopy)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NoOfHardcopy)
-            </th>
-            <th>
             </th>
         </tr>
     </thead>
@@ -30,15 +27,14 @@
             <td>
                 <input id=@item.ImageId type="checkbox" name="SelectedImage" value=@item.ImageId class="w3-check" />
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsHardcopy)
-            </td>
-            <td>
+             <td>
+                 <a href="@Html.DisplayFor(modelItem => item.FilePath)" target="_blank" rel="noopener noreferrer">
+                 <img src="@Html.DisplayFor(modelItem => item.FilePath)" width="900" height="600">
+                 </a>
+             </td>
+             <td>
                 @Html.DisplayFor(modelItem => item.NoOfHardcopy)
             </td>
-             <td>
-                 <img src="@Html.DisplayFor(modelItem => item.FilePath)" width="900" height="600">
-             </td>
         </tr>
 }
     </tbody>

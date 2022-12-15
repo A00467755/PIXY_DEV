@@ -95,7 +95,7 @@ namespace PIXY.Controllers
                 var query = from i in _context.Images
                             where i.ImageTags.Contains(SearchString)
                             from u in _context.Users.Where(u => u.ID == i.UserId)
-                            from c in _context.Carts.Where(c => c.ImageId == i.ID).DefaultIfEmpty() //Left Join
+                            from c in _context.Carts.Where(c => c.ImageId == i.ID && c.UserId == UserID).DefaultIfEmpty() //Left Join
                             from p in _context.PurchasedItems.Where(p=> i.ID==p.ImageId && p.UserId == UserID ).DefaultIfEmpty() //Left Join
                             select new ImageVM
                             {

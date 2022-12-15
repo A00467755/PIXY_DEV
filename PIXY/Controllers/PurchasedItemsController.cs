@@ -29,16 +29,13 @@ namespace PIXY.Controllers
             {
                 // Haven't login
                 return RedirectToAction("Login", "Users");
-
             }
             else
             {
                 // Have login
-             
 #pragma warning disable CS8629 // Nullable value type may be null.
                 int UserID = (int)HttpContext.Session.GetInt32("UserID");
 #pragma warning restore CS8629 // Nullable value type may be null.
-
 
                 var query = from p in _context.PurchasedItems
                             join i in _context.Images on p.ImageId equals i.ID
