@@ -16,8 +16,11 @@ namespace PIXY.Models
         public string LastName { get; set; }
         [Required]
         public string FirstName { get; set; }
+
         [Required]
+        [RegularExpression("^[^@\\s]+@[^@\\s]+\\.(com|net|org|gov)$", ErrorMessage = "Please input vaild Email ID")]
         public string Email { get; set; }
+
         [Required]
         public string PhoneNumber { get; set; }
         [Required]
@@ -33,7 +36,6 @@ namespace PIXY.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-
 
         [NotMapped] // Does not effect with database
         [Required(ErrorMessage = "Confirm Password required")]
