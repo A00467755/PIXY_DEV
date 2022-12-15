@@ -11,5 +11,9 @@
         public string FilePath { get; set; }
 
         public List<int> SelectedImage { get; set; }
+
+        public DateTime PurchaseDataTime { get; set; }
+
+        public int TransactionId { get; set; }
     }
 }

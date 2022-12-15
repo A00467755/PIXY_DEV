@@ -14,6 +14,7 @@ using PIXY.Data;
 using PIXY.Models;
 using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
+using System.Drawing.Printing;
 
 namespace PIXY.Controllers
 {
@@ -27,7 +28,7 @@ namespace PIXY.Controllers
         }
 
         // GET: Images
-        public async Task<IActionResult> Index(string ImageCategory, string SearchString)
+        public async Task<IActionResult> Index(string ImageCategory, string SearchString, int? PageNumber)
         {
 
             // Get Categories List
@@ -40,6 +41,10 @@ namespace PIXY.Controllers
                 SearchString = "";
             }
 
+            // Paging Feature
+            int PageSize = 2;    // No of record per page   ******** May Change Config Later ******** 
+            PageNumber ??= 1;   // PageNumber default = 1
+            
             if (HttpContext.Session.GetInt32("UserID") == null)
             {
                 // Haven't login
@@ -68,13 +73,17 @@ namespace PIXY.Controllers
                     query = query.Where(i => i.CategoryDesc == ImageCategory);
                 }
 
+                var count = await query.CountAsync();       // Paging Feature
+
                 var imageCategoryVM = new ImagesCategoryView
                 {
-                    Categories = new SelectList(await CategoryQuery.Distinct().ToListAsync()),  // Execute query for Categories List
-                    ImagesVM = await query.ToListAsync(),                                       // Execute query for Image List
-                    SearchTags = SearchString
+                    Categories = new SelectList(await CategoryQuery.Distinct().ToListAsync()),                              // Execute query for Categories List
+                    ImagesVM = await query.Skip((int)(PageNumber - 1) * PageSize).Take(PageSize).ToListAsync(),            // Execute query for Image List
+                    SearchTags = SearchString,
+                    PageIndex = (int)PageNumber,                                    // Paging Feature
+                    TotalPages = (int)Math.Ceiling(count / (double)PageSize)        // Paging Feature
                 };
-
+                
                 return View(imageCategoryVM);
             }
             else
@@ -110,11 +119,15 @@ namespace PIXY.Controllers
                     query = query.Where(i => i.CategoryDesc == ImageCategory);
                 }
 
+                var count = await query.CountAsync();       // Paging Feature
+
                 var imageCategoryVM = new ImagesCategoryView
                 {
                     Categories = new SelectList(await CategoryQuery.Distinct().ToListAsync()),  // Execute query for Categories List
-                    ImagesVM = await query.ToListAsync(),                                       // Execute query for Image List
-                    SearchTags = SearchString
+                    ImagesVM = await query.Skip((int)(PageNumber - 1) * PageSize).Take(PageSize).ToListAsync(),   // Execute query for Image List
+                    SearchTags = SearchString,
+                    PageIndex = (int)PageNumber,                                    // Paging Feature
+                    TotalPages = (int)Math.Ceiling(count / (double)PageSize)        // Paging Feature
                 };
 
                 return View(imageCategoryVM);
