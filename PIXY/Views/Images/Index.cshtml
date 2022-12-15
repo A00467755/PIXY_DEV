@@ -71,14 +71,14 @@
             <td>
                @Html.DisplayFor(modelItem => item.AuthorName)
             </td>
-            <td>
+            <td class="product">
              @if (item.IsPurchased == false)
              {
-                <a href="@Html.DisplayFor(modelItem => item.FilePathWatermark)" target="_blank" rel="noopener noreferrer"><img src="@Html.DisplayFor(modelItem => item.FilePathWatermark)" width="900" height="600"></a>
+                <a href="@Html.DisplayFor(modelItem => item.FilePathWatermark)" target="_blank" rel="noopener noreferrer"><img src="@Html.DisplayFor(modelItem => item.FilePathWatermark)"></a>
              }
              else
             {
-               <a href="@Html.DisplayFor(modelItem => item.FilePath)" target="_blank" rel="noopener noreferrer"><img src="@Html.DisplayFor(modelItem => item.FilePath)" width="900" height="600"></a>
+               <a href="@Html.DisplayFor(modelItem => item.FilePath)" target="_blank" rel="noopener noreferrer"><img src="@Html.DisplayFor(modelItem => item.FilePath)"></a>
             }
             </td>
             <td>
