@@ -1,20 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PIXY.Models
+﻿namespace PIXY.Models
 {
-    public class Transaction
+    public class PurchasedItemVM
     {
-        [Required]
         public int ID { get; set; }
-        [Required]
         public int UserId { get; set; }
-        [Required]
         public int ImageId { get; set; }
-        [Required]
         public Boolean IsHardcopy { get; set; }
-        [Required]
         public int NoOfHardcopy { get; set; }
-        [Required]
+
+        public string FilePath { get; set; }
+
+        public List<int> SelectedImage { get; set; }
+
         public DateTime PurchaseDataTime { get; set; }
+
+        public int TransactionId { get; set; }
     }
 }
