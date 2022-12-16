@@ -16,7 +16,7 @@ namespace PIXY.Models
 
         [NotMapped]
         [Required]
-        [Remote("ValidateCard","Carts", AdditionalFields = "CardType", HttpMethod = "Post", ErrorMessage = "Invalid Card Number")]
+        [Remote("ValidateCard","Carts", AdditionalFields = "CardType", HttpMethod = "Post", ErrorMessage = "Invalid Card Number/Type")]
         public string CardNo { get; set; }
 
         [NotMapped]

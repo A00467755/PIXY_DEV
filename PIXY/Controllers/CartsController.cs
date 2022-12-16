@@ -188,6 +188,10 @@ namespace PIXY.Controllers
 
         public bool ValidateCard(string CardNo, string CardType)
         {
+            if (CardType == null)
+            {
+                return false;
+            }
             if (!long.TryParse(CardNo, out _))
             {
                 return false;
