@@ -95,12 +95,12 @@
               @if (item.IsPurchased==false)
                     {
                         if (item.IsInCart == false) {
-                            <a href="/Carts/addtocart?ImageId=@Html.DisplayFor(modelItem => item.ID)" type="button">Add to cart</a>
+                            <a href="/Carts/addtocart?ImageId=@Html.DisplayFor(modelItem => item.ID)" type="button" class="btn-place-bid">Add</a>
                         }
                         else
                         {
                             <span>Added in Cart</span>
-                            <a href="/Carts/RemoveFromCartByImageId?ImageId=@Html.DisplayFor(modelItem => item.ID)" type="button">Remove</a>
+                            <a href="/Carts/RemoveFromCartByImageId?ImageId=@Html.DisplayFor(modelItem => item.ID)" type="button" class="btn-place-bid">Remove</a>
                         }
                     }
                     else
