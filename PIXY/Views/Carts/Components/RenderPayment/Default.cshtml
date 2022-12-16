@@ -7,11 +7,18 @@
         <form id="form1" name ="form1" method="post" asp-controller="Carts" asp-action="ConfirmPurchase">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ID" />
+            <select name="CardType">
+                <option value="">Card Type</option>
+                <option value="Visa">Visa</option>
+                <option value="MasterCard">MasterCard</option>
+                <option value="Amex">Amex</option>
+            </select>
             <div class="form-group">
                 <label asp-for="CardNo" class="control-label"></label>
-                <input asp-for="CardNo" class="form-control" maxlength="16"/>
+                <input asp-for="CardNo" class="form-control" maxlength="16" />
                 <span asp-validation-for="CardNo" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="NameOnCard" class="control-label"></label>
                 <input asp-for="NameOnCard" class="form-control"/>
@@ -21,9 +28,9 @@
                 <label asp-for="ExpiryDateMonth" class="control-label"></label>
                 <input asp-for="ExpiryDateMonth" class="form-control" maxlength="2"/> 
                 <span asp-validation-for="ExpiryDateMonth" class="text-danger"></span>
-                /
+                 
                 <label asp-for="ExpiryDateYear" class="control-label"></label>
-                <input asp-for="ExpiryDateYear" class="form-control" maxlength="2"/> 
+                <input asp-for="ExpiryDateYear" class="form-control" maxlength="4"/> 
                 <span asp-validation-for="ExpiryDateYear" class="text-danger"></span>
             </div>
             <div class="form-group">

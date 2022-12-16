@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PIXY.Data;
@@ -36,9 +37,7 @@ namespace PIXY.Controllers
             else {
                 // Haven login
 
-#pragma warning disable CS8629 // Nullable value type may be null.
                 int UserID = (int)HttpContext.Session.GetInt32("UserID");
-#pragma warning restore CS8629 // Nullable value type may be null.
 
                 Cart c = new Cart();
                 c.UserId = UserID;
@@ -114,9 +113,7 @@ namespace PIXY.Controllers
                 // Have login
 
                 //int UserID = 1; // login user ID to changed
-#pragma warning disable CS8629 // Nullable value type may be null.
                 int UserID = (int)HttpContext.Session.GetInt32("UserID");
-#pragma warning restore CS8629 // Nullable value type may be null.
                 // Copy Cart content to transaction and purchased items and remove cart item
 
                 List<Cart> carts = await _context.Carts.Where(m => m.UserId == UserID).ToListAsync();
@@ -265,6 +262,46 @@ namespace PIXY.Controllers
         private bool CartExists(int id)
         {
           return _context.Carts.Any(e => e.ID == id);
+        }
+
+        public bool ValidateCard(string CardNo, string CardType)
+        {
+            if (!long.TryParse(CardNo, out _))
+            {
+                return false;
+            }
+
+            if (CardNo.Length < 15 && CardNo.Length > 16)
+            {
+                return false;
+            }
+            if (CardType.Equals("Visa"))
+            {
+                if (!(CardNo.StartsWith("4") && CardNo.Length == 16))
+                {
+                    return false;
+                }
+            }
+            if (CardType.Equals("MasterCard"))
+            {
+                int CardNumberPrefix = int.Parse(CardNo.Substring(0,2));
+                if (!((CardNumberPrefix >= 51 && CardNumberPrefix <= 55) && CardNo.Length == 16))
+                {
+                    return false;
+                }
+            }
+            if (CardType.Equals("Amex"))
+            {
+                if (CardNo.Length != 15)
+                {
+                    return false;
+                }
+                if (!(CardNo.StartsWith("34") || CardNo.StartsWith("37")))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
