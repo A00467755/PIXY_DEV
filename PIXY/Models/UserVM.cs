@@ -10,19 +10,41 @@ namespace PIXY.Models
 {
     public class UserVM
     {
+        const string RegSpecCharPattern = @"^(?!.*[;:!@#$%^*+?\\\/<>0-9]).*$";
+
         [Required]
         public int ID { get; set; }
         [Required]
+        [RegularExpression(RegSpecCharPattern, ErrorMessage = "Contains invalid character: ?!.*[;:!@#$%^*+?\\/<>0123456789")]
         public string LastName { get; set; }
         [Required]
+        [RegularExpression(RegSpecCharPattern, ErrorMessage = "Contains invalid character: ?!.*[;:!@#$%^*+?\\/<>0123456789")]
         public string FirstName { get; set; }
         [Required]
+        [RegularExpression("^[^@\\s]+@[^@\\s]+\\.(com|net|org|gov)$", ErrorMessage = "Please input vaild Email ID")]
         public string Email { get; set; }
         [Required]
+        [RegularExpression("^\\(?([0-9]{3})\\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Please input a valid 10 digit number")]
         public string PhoneNumber { get; set; }
         [Required]
         public string Address { get; set; }
+        [Required]
+        [RegularExpression(RegSpecCharPattern, ErrorMessage = "Contains invalid character: ?!.*[;:!@#$%^*+?\\/<>0123456789")]
+        public string City { get; set; }
 
+        [Required]
+        [RegularExpression(RegSpecCharPattern, ErrorMessage = "Contains invalid character: ?!.*[;:!@#$%^*+?\\/<>0123456789")]
+        public string Province { get; set; }
+
+        [Required]
+        [Remote("CheckPostalCode", "Users", HttpMethod = "POST", AdditionalFields = "PostalCode", ErrorMessage = "Country not match Postal Code/ Zip Code")]
+        public string Country { get; set; }
+
+        [Required]
+        [Remote("CheckPostalCode", "Users", HttpMethod = "POST", AdditionalFields = "Country", ErrorMessage = "Please enter a valid Postal Code/ Zip Code")]
+        public string PostalCode { get; set; }
+
+        [Required]
         public string UserName { get; set; }
 
         [Required]

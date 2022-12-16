@@ -35,12 +35,20 @@ namespace PIXY.ViewComponents
                 var tmp = (from u in _context.Users
                             where u.ID == UserID
                             select new {
-                                Address = u.Address
+                                Address = u.Address,
+                                City = u.City,
+                                Province = u.Province,
+                                Country = u.Country,
+                                PostalCode = u.PostalCode
                             }).FirstOrDefault();
 
                 if (tmp != null)
                 {
                     result.Address = tmp.Address;
+                    result.City = tmp.City;
+                    result.Province = tmp.Province;
+                    result.Country = tmp.Country;
+                    result.PostalCode = tmp.PostalCode;
                 }
 
                 return View(result);

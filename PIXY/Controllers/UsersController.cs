@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileSystemGlobbing.Internal;
 using PIXY.Data;
 using PIXY.Models;
 
@@ -44,6 +46,10 @@ namespace PIXY.Controllers
                     HttpContext.Session.SetString("LastName", user.LastName);
                     HttpContext.Session.SetString("FirstName", user.FirstName);
                     HttpContext.Session.SetString("Address", user.Address);
+                    HttpContext.Session.SetString("City", user.City);
+                    HttpContext.Session.SetString("Province", user.Province);
+                    HttpContext.Session.SetString("Country", user.Country);
+                    HttpContext.Session.SetString("PostalCode", user.PostalCode);
                     return RedirectToAction("Index", "Images");
                 }
             } else {
@@ -60,6 +66,10 @@ namespace PIXY.Controllers
             HttpContext.Session.Remove("LastName");
             HttpContext.Session.Remove("FirstName");
             HttpContext.Session.Remove("Address");
+            HttpContext.Session.Remove("City");
+            HttpContext.Session.Remove("Province");
+            HttpContext.Session.Remove("Country");
+            HttpContext.Session.Remove("PostalCode");
             return RedirectToAction("Index", "Images");
         }
 
@@ -75,7 +85,7 @@ namespace PIXY.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SignUp([Bind("ID,LastName,FirstName,Email,PhoneNumber,Address,UserName,Password,ConfirmPassword")] User user)
+        public async Task<IActionResult> SignUp([Bind("ID,LastName,FirstName,Email,PhoneNumber,Address,City,Province,Country,PostalCode,UserName,Password,ConfirmPassword")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +97,10 @@ namespace PIXY.Controllers
                 HttpContext.Session.SetString("LastName", user.LastName);
                 HttpContext.Session.SetString("FirstName", user.FirstName);
                 HttpContext.Session.SetString("Address", user.Address);
+                HttpContext.Session.SetString("City", user.City);
+                HttpContext.Session.SetString("Province", user.Province);
+                HttpContext.Session.SetString("Country", user.Country);
+                HttpContext.Session.SetString("PostalCode", user.PostalCode);
             }
             return RedirectToAction("Index", "Images");
         }
@@ -122,6 +136,10 @@ namespace PIXY.Controllers
                     userVM.Email = user.Email;
                     userVM.PhoneNumber = user.PhoneNumber;
                     userVM.Address = user.Address;
+                    userVM.City = user.City;
+                    userVM.Province = user.Province;
+                    userVM.Country = user.Country;
+                    userVM.PostalCode = user.PostalCode;
                     userVM.UserName = user.UserName;
                     userVM.Password = user.Password;
                     userVM.ConfirmPassword = user.Password;   //autofill ConfirmPassword
@@ -136,7 +154,7 @@ namespace PIXY.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,LastName,FirstName,Email,PhoneNumber,Address,UserName,Password,ConfirmPassword")] UserVM userVM)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,LastName,FirstName,Email,PhoneNumber,Address,City,Province,Country,PostalCode,UserName,Password,ConfirmPassword")] UserVM userVM)
         {
             //ModelState.Remove("UserName");
             if (id != userVM.ID)
@@ -155,6 +173,10 @@ namespace PIXY.Controllers
                     user.Email = userVM.Email;
                     user.PhoneNumber = userVM.PhoneNumber;
                     user.Address = userVM.Address;
+                    user.City = userVM.City;
+                    user.Province = userVM.Province;
+                    user.Country = userVM.Country;
+                    user.PostalCode = userVM.PostalCode;
                     user.UserName = userVM.UserName;
                     user.Password = userVM.Password;
 
@@ -165,6 +187,10 @@ namespace PIXY.Controllers
                     HttpContext.Session.SetString("LastName", user.LastName);
                     HttpContext.Session.SetString("FirstName", user.FirstName);
                     HttpContext.Session.SetString("Address", user.Address);
+                    HttpContext.Session.SetString("City", user.City);
+                    HttpContext.Session.SetString("Province", user.Province);
+                    HttpContext.Session.SetString("Country", user.Country);
+                    HttpContext.Session.SetString("PostalCode", user.PostalCode);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -215,5 +241,39 @@ namespace PIXY.Controllers
 
             return status;
         }
+
+        public bool CheckPostalCode(string PostalCode, string Country)
+        {
+            //string RegexPatternCA = @"/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ - NPRSTV - Z][-]?\d[ABCEGHJ - NPRSTV - Z]\d$/i";
+
+            string RegexPatternCA = @"[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ] ?[0-9][ABCEGHJKLMNPRSTVWXYZ][0-9]";
+            string RegexPatternUS = @"^\d{5}(?:[-\s]\d{4})?$";
+            String Pattern;
+
+
+            if (Country == "Canada")
+            {
+                Pattern = RegexPatternCA;
+            }
+            else
+            {
+                Pattern = RegexPatternUS;
+            }
+
+            bool status;
+
+            Match m = Regex.Match(PostalCode, Pattern, RegexOptions.IgnoreCase);
+            if (m.Success) { 
+                //Already registered  
+                status = true;
+            }
+            else
+            {
+                //Available to use  
+                status = false;
+            }
+            return status;
+        }
+            
     }
 }
