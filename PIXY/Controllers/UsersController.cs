@@ -242,7 +242,7 @@ namespace PIXY.Controllers
             return status;
         }
 
-        public bool CheckPostalCode(string PostalCode, string Country)
+            public bool CheckPostalCode(string PostalCode, string Country)
         {
             //string RegexPatternCA = @"/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ - NPRSTV - Z][-]?\d[ABCEGHJ - NPRSTV - Z]\d$/i";
 
