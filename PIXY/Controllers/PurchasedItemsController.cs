@@ -21,9 +21,7 @@ namespace PIXY.Controllers
         }
 
         // GET: PurchasedItems
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> Index()
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             if (HttpContext.Session.GetInt32("UserID") == null)
             {
@@ -35,9 +33,7 @@ namespace PIXY.Controllers
             {
                 // Have login
              
-#pragma warning disable CS8629 // Nullable value type may be null.
                 int UserID = (int)HttpContext.Session.GetInt32("UserID");
-#pragma warning restore CS8629 // Nullable value type may be null.
 
 
                 var query = from p in _context.PurchasedItems
