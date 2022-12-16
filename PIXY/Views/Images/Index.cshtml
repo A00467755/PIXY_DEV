@@ -56,9 +56,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.ImagesVM![0].Price)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagesVM![0].HaveHardcopy)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -89,23 +86,25 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HaveHardcopy)
-            </td>
-            <td>
               @if (item.IsPurchased==false)
                     {
                         if (item.IsInCart == false) {
+                            <br />
                             <a href="/Carts/addtocart?ImageId=@Html.DisplayFor(modelItem => item.ID)" type="button" class="btn-place-bid">Add</a>
                         }
                         else
                         {
                             <span>Added in Cart</span>
+                            <br />
+                            <br />
                             <a href="/Carts/RemoveFromCartByImageId?ImageId=@Html.DisplayFor(modelItem => item.ID)" type="button" class="btn-place-bid">Remove</a>
                         }
                     }
                     else
                     {
                         <span>Purchased</span>
+                        <br />
+                        <br />
                         <a href="/Images/DownLoadZip?ImageId=@Html.DisplayFor(modelItem => item.ID)" type="button" class="btn-place-bid">Download</a>
                     }
              </td>

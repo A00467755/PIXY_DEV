@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,32 +13,36 @@ namespace PIXY.Models
 
         [NotMapped]
         [Required]
+        [DisplayName("Card Type")]
         public string CardType { get; set; }
 
         [NotMapped]
         [Required]
+        [DisplayName("Card No.")]
         [Remote("ValidateCard","Carts", AdditionalFields = "CardType", HttpMethod = "Post", ErrorMessage = "Invalid Card Number/Type")]
         public string CardNo { get; set; }
 
         [NotMapped]
         [Required]
+        [DisplayName("Name On Card")]
         [RegularExpression(RegSpecCharPattern, ErrorMessage = "Invalid Character: ?!.*[;:!@#$%^*+?\\/<>0123456789")]
-
-
         public string NameOnCard { get; set; }
 
         [NotMapped]
         [Required]
+        [DisplayName("Expiry Date Month")]
         [RegularExpression("[0][1-9]|[1][0-2]", ErrorMessage = "Please input vaild Month")]
         public string ExpiryDateMonth { get; set; }
 
         [NotMapped]
         [Required]
+        [DisplayName("Expiry Date Year")]
         [RegularExpression("[2][0][2][2-9]|[2][0][3][0-7]", ErrorMessage = "Please input vaild Year")]
         public string ExpiryDateYear { get; set; }
 
         [NotMapped]
         [Required]
+        [DisplayName("Security Code")]
         [RegularExpression("^[0-9]{3}$", ErrorMessage = "Please input vaild Security Code")]
         public string SecurityCode { get; set; }
         public string Address { get; set; }

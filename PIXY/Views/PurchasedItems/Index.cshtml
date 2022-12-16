@@ -13,6 +13,7 @@
     <thead>
         <tr>
             <th>
+                    <input type="checkbox" name="SelectAllChk" id="SelectAllChk" />
             </th>
             <th>
             </th>
@@ -50,6 +51,20 @@
                     $('#DownloadBtn').prop('disabled', false);
                 } else {
                     $('#DownloadBtn').prop('disabled', true);
+                }
+            });
+
+            // Listen for click on toggle checkbox
+            $('#SelectAllChk').click(function (event) {
+                if (this.checked) {
+                    // Iterate each checkbox
+                    $(':checkbox').each(function () {
+                        this.checked = true;
+                    });
+                } else {
+                    $(':checkbox').each(function () {
+                        this.checked = false;
+                    });
                 }
             });
         });

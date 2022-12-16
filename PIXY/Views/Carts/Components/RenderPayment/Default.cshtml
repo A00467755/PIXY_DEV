@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form id="form1" name ="form1" method="post" asp-controller="Carts" asp-action="ConfirmPurchase">
+        <form method="post" asp-controller="Carts" asp-action="ConfirmPurchase">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ID" />
             <select name="CardType">
@@ -49,6 +49,7 @@
     </div>
 </div>
 <div>
+<p></p>
     <h4>For Hardcopy</h4>
     <hr />
     <div><a asp-controller="Users" asp-action="Edit">Update Address</a></div>
