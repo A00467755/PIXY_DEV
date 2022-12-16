@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "q/DY8UIx/BhSYEJwCb8hBHezn2TYn2C+8SRkMG7U+5s=",
+  "Hash": "yy5x2XLgeZu1WhCMtho7Y2RFj+cRn8eMT5nkEmSKu3U=",
   "Source": "PIXY",
   "BasePath": "_content/PIXY",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\images\\crypto.png",
+      "SourceId": "PIXY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\",
+      "BasePath": "_content/PIXY",
+      "RelativePath": "images/crypto.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\crypto.png"
     },
     {
       "Identity": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\images\\drawing\\pic001.jpg",
@@ -238,23 +255,6 @@
       "OriginalItemSpec": "wwwroot\\images\\drawing\\pic009.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\images\\DSC_0228.JPG",
-      "SourceId": "PIXY",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\",
-      "BasePath": "_content/PIXY",
-      "RelativePath": "images/DSC_0228.JPG",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\DSC_0228.JPG"
-    },
-    {
       "Identity": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\images\\photo\\001.JPG",
       "SourceId": "PIXY",
       "SourceType": "Discovered",
@@ -272,12 +272,12 @@
       "OriginalItemSpec": "wwwroot\\images\\photo\\001.JPG"
     },
     {
-      "Identity": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\images\\photo\\001_w.jpg",
+      "Identity": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\images\\photo\\001_w.JPG",
       "SourceId": "PIXY",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\",
       "BasePath": "_content/PIXY",
-      "RelativePath": "images/photo/001_w.jpg",
+      "RelativePath": "images/photo/001_w.JPG",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -286,7 +286,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\photo\\001_w.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\photo\\001_w.JPG"
     },
     {
       "Identity": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\images\\photo\\002.jpg",
@@ -1749,6 +1749,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\resources\\Home.svg",
+      "SourceId": "PIXY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sharl\\Source\\Repos\\PIXY_DEV\\PIXY\\wwwroot\\",
+      "BasePath": "_content/PIXY",
+      "RelativePath": "resources/Home.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\resources\\Home.svg"
     }
   ]
 }
