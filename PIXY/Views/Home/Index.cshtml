@@ -4,11 +4,36 @@
 <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-
-    <div id="root"></div>
+<div class="container-fluid nav_bg">
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <div class="row">
+                <div class="col-md-6 mt-lg-5 pt-3 pt-lg-0 order-1 order-lg-1">
+                    <h6 class="Marketplace my-4">
+                        Explore the Photography Marketplace
+                    </h6>
+                    <h1 class="Header">
+                        DISCOVER YOUR NEW PLACE FOR
+                        <span style="color:#9754CB"> PICTURES PERFECT!</span>
+                    </h1>
+                    <h6 class="Description my-4">
+                        Your very own real digital marketplace for
+                        photographs and different art styles.
+                    </h6>
+                    <div class="mt-5">
+                        <a href="/Images/Index" class="btn-place-bid">
+                            DISCOVER
+                        </a>
+                    </div>
+                    <div class="mt-5">
+                        <div id="root"></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-2 order-lg-2 header-img">
+                    <img src="/resources/Home.svg" class="containerx avatar" alt="Homepage" />
+                </div>
+            </div>
+        </div>
 </div>
 
 <script>
@@ -24,8 +49,8 @@
         render() {
             return e(
                 'a',
-                { href: "/Images/Index" },
-                'Like'
+                    { href: "/Users/Login", class: "btn-place-bid" },
+                    'LOGIN'
             );
         }
     }
