@@ -24,15 +24,19 @@
                 <input asp-for="NameOnCard" class="form-control"/>
                 <span asp-validation-for="NameOnCard" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
                 <label asp-for="ExpiryDateMonth" class="control-label"></label>
                 <input asp-for="ExpiryDateMonth" class="form-control" maxlength="2"/> 
                 <span asp-validation-for="ExpiryDateMonth" class="text-danger"></span>
-                 
+            </div>
+
+            <div class="form-group">
                 <label asp-for="ExpiryDateYear" class="control-label"></label>
                 <input asp-for="ExpiryDateYear" class="form-control" maxlength="4"/> 
                 <span asp-validation-for="ExpiryDateYear" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="SecurityCode" class="control-label"></label>
                 <input asp-for="SecurityCode" class="form-control" maxlength="3"/>
