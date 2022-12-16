@@ -23,11 +23,15 @@
 }
 
 <a asp-action="Index"
+   asp-route-ImageCategory="@Model.ImageCategory"
+   asp-route-SearchString="@Model.SearchTags"
    asp-route-pageNumber="@(Model.PageIndex - 1)"
    class="btn btn-default @prevDisabled">
     Previous
 </a>
 <a asp-action="Index"
+   asp-route-ImageCategory="@Model.ImageCategory"
+   asp-route-SearchString="@Model.SearchTags"
    asp-route-pageNumber="@(Model.PageIndex + 1)"
    class="btn btn-default @nextDisabled">
     Next
@@ -112,11 +116,15 @@
 </table>
 <!-- Paging Feature -->
 <a asp-action="Index"
+   asp-route-ImageCategory="@Model.ImageCategory"
+   asp-route-SearchString="@Model.SearchTags"
    asp-route-pageNumber="@(Model.PageIndex - 1)"
    class="btn btn-default @prevDisabled">
     Previous
 </a>
 <a asp-action="Index"
+   asp-route-ImageCategory="@Model.ImageCategory"
+   asp-route-SearchString="@Model.SearchTags"
    asp-route-pageNumber="@(Model.PageIndex + 1)"
    class="btn btn-default @nextDisabled">
     Next

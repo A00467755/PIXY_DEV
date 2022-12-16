@@ -80,6 +80,7 @@ namespace PIXY.Controllers
                     Categories = new SelectList(await CategoryQuery.Distinct().ToListAsync()),                              // Execute query for Categories List
                     ImagesVM = await query.Skip((int)(PageNumber - 1) * PageSize).Take(PageSize).ToListAsync(),            // Execute query for Image List
                     SearchTags = SearchString,
+                    ImageCategory = ImageCategory,
                     PageIndex = (int)PageNumber,                                    // Paging Feature
                     TotalPages = (int)Math.Ceiling(count / (double)PageSize)        // Paging Feature
                 };
@@ -126,6 +127,7 @@ namespace PIXY.Controllers
                     Categories = new SelectList(await CategoryQuery.Distinct().ToListAsync()),  // Execute query for Categories List
                     ImagesVM = await query.Skip((int)(PageNumber - 1) * PageSize).Take(PageSize).ToListAsync(),   // Execute query for Image List
                     SearchTags = SearchString,
+                    ImageCategory = ImageCategory,
                     PageIndex = (int)PageNumber,                                    // Paging Feature
                     TotalPages = (int)Math.Ceiling(count / (double)PageSize)        // Paging Feature
                 };

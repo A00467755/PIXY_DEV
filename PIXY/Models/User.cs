@@ -37,7 +37,6 @@ namespace PIXY.Models
         public string Province { get; set; }
 
         [Required]
-        [Remote("CheckPostalCode", "Users", HttpMethod = "POST", AdditionalFields = "PostalCode", ErrorMessage = "Country not match Postal Code/ Zip Code")]
         public string Country { get; set; }
 
         [Required]
