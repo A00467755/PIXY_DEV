@@ -14,7 +14,7 @@ namespace PIXY.Models
 
         [DisplayName("FORMAT")]
         public string ImageType { get; set; }
-        [DisplayName("IMAGE TAGS")]
+        [DisplayName("TAGS")]
         public string ImageTags { get; set; }
 
         [DisplayName("AUTHOR")]
