@@ -1,7 +1,6 @@
-# MCDA5510 Final Group Project
+# MCDA5510 Final Group Project (Team 2)
 
-Team 2
-Members:
+Members
 
 A00466297 - Sharlene Wadhwa
 
